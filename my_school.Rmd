@@ -1,0 +1,30 @@
+---
+title: "My School"
+author: "Matthew Tung"
+date: "7/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, eval = TRUE}
+library(leaflet)
+
+df <- data.frame(lat = c(40.73016576513472, 40.72916522195246,40.729742473339776, 40.72997215296102,40.72820271898377), lng = c(-73.99596299999665,-73.99620838650216, -73.99622984417248, -73.99784185166257,  -73.98861542514005))
+websites<- c(
+    "<a href='https://steinhardt.nyu.edu/'>NYU Steinhardt</a>", 
+    "<a href='https://www.stern.nyu.edu/'>NYU Stern</a>", 
+    "<a href='https://www.library.nyu.edu'>Elmer Holmes Bobst Library</a>", 
+    "<a href='https://www.nyu.edu/life/campus-resources/kimmel-center.html'>NYU Kimmels</a>", 
+    "<a href='https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/residence-halls/seventh-street.html'>My Dorm</a>"
+)
+
+df%>%
+    leaflet() %>%
+    addTiles()%>%
+    addMarkers(popup = websites)%>%
+    addCircleMarkers(color = c('blue', 'red', 'green', 'yellow', 'black'))
+
+```
